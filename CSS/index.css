@@ -1,0 +1,42 @@
+@media (min-width: 768px) {
+.title-container{
+    width:50%;
+    background-color: black;
+
+}}
+
+.text-logo{
+    width :30%;
+    height: 30%;
+}
+
+.top-buffer{
+    padding-top: 2%;
+}
+
+.left-buffer{
+    margin-left: 2%;
+
+}
+
+.bottom-buffer{
+    padding-bottom: 3%;
+}
+
+.placeholder-size{
+    width:  15%;
+    height: 15%;
+}
+
+.navbar-nav {
+    float:none;
+    margin:0 auto;
+    text-align: center;
+}
+
+.navbar {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+
+}
