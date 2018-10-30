@@ -1,3 +1,7 @@
+// server.js
+
+// set up ======================================================================
+// get all the tools we need
 var express  = require('express');
 var app      = express();
 var port     = process.env.PORT || 8080;
@@ -16,10 +20,6 @@ var configDB = require('./config/database.js');
 mongoose.connect('mongodb+srv://etronicsAdmin:<test>@e-tronics-k3fco.mongodb.net/test?retryWrites=true', {useNewUrlParser: true}); // connect to our database
 
 require('./config/passport')(passport); // pass passport for configuration
-
-
-app.use('/public', express.static(__dirname + "/public"));
-
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
