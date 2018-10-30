@@ -1,14 +1,15 @@
+
+.text-logo{
+    width :30%;
+    height: 30%;
+}
+
 @media (min-width: 768px) {
 .title-container{
     width:50%;
     background-color: black;
 
 }}
-
-.text-logo{
-    width :30%;
-    height: 30%;
-}
 
 .top-buffer{
     padding-top: 2%;
