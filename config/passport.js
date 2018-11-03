@@ -33,10 +33,15 @@ module.exports = function(passport) {
     // we are using named strategies since we have one for login and one for signup
     // by default, if there was no name, it would just be called 'local'
 
-    passport.use('local-signup', new LocalStrategy({
+  passport.use('local-signup', new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
-        usernameField : 'email',
+        email : 'email',
+        firstName : 'firstName',
+        lastName : 'lastName',
+        dateOfBirth : 'birthdate',
+        userName : 'userName',
         passwordField : 'password',
+<<<<<<< HEAD
         firstName : 'firstName',
         lastName : 'lastName',
         userName : 'userName',
@@ -47,6 +52,12 @@ module.exports = function(passport) {
         var lastName = req.body.lastName;
         var userName = req.body.userName;
         
+=======
+
+    },
+    function(email, password,firstName, userName,lastName, dateOfBirth, done) {
+
+>>>>>>> f4bcbaca758e5152854a3657da745049569912c7
         // asynchronous
         // User.findOne wont fire unless data is sent back
         process.nextTick(function() {
@@ -59,16 +70,17 @@ module.exports = function(passport) {
                 return done(err);
 
             // check to see if theres already a user with that email
-            if (user) {
-                return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
-            } else {
-
+      
                 // if there is no user with that email
                 // create the user
                 var newUser            = new User();
 
                 // set the user's local credentials
                 newUser.local.email    = email;
+                newUser.local.firstName = firstName;
+                newUser.local.lastName = lastName;
+                newUser.local.userName = userName;
+                newUser.local.dateOfBirth = dateOfBirth;
                 newUser.local.password = newUser.generateHash(password);
                 newUser.local.firstName = firstName;
                 newUser.local.lastName = lastName;
@@ -80,13 +92,14 @@ module.exports = function(passport) {
                         throw err;
                     return done(null, newUser);
                 });
-            }
+            
 
         });    
 
         });
 
     }));
+<<<<<<< HEAD
 
 
 
@@ -130,3 +143,6 @@ function(req, email, password, done) { // callback with email and password from 
 };
 
 
+=======
+};
+>>>>>>> f4bcbaca758e5152854a3657da745049569912c7

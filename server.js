@@ -1,7 +1,3 @@
-// server.js
-
-// set up ======================================================================
-// get all the tools we need
 var express  = require('express');
 var app      = express();
 var port     = process.env.PORT || 8080;
@@ -34,8 +30,16 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
+<<<<<<< HEAD
 app.use('/css', express.static(__dirname + "/CSS"));
 app.use('/Images', express.static(__dirname + "/Images"));
+=======
+
+
+app.use('/css', express.static(__dirname + "/CSS"));
+app.use('/Images', express.static(__dirname + "/Images"));
+
+>>>>>>> f4bcbaca758e5152854a3657da745049569912c7
 // routes ======================================================================
 require('./app/route.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
