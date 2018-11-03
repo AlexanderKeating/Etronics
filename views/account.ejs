@@ -19,12 +19,11 @@
 <nav class="navbar navbar-expand-lg title-container navbar-light bg-light">
     <div class="container" id="navbarNavAltMarkup">
         <div class="navbar-nav" >
-        <a class="nav-item nav-link active" href="index.html">Home</a>
-        <a class="nav-item nav-link" href="#">Shop</a>
+        <a class="nav-item nav-link active" href="/">Home</a>
+        <a class="nav-item nav-link" href="shop">Shop</a>
         <a class="nav-item nav-link" href="#">Account  <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="contact.html">Contact</a>
-        <a class="nav-item nav-link" href="login.html">Log In</a>
-
+        <a class="nav-item nav-link" href="contact">Contact</a>
+        <a class="nav-item nav-link">Sign Out</a>
         </div>
     </div>
 </nav>  
@@ -38,18 +37,20 @@
     <div class="row justify-content-md-center">
         <img src="Images/profilePicPLaceholder.png" alt="Profile Picture Placeholder" class="rounded mx-auto d-block placeholder-size bottom-buffer">
     </div>
+
     <div class="row justify-content-md-center">
             <div class="col-4">
-            <div class="form-group">
-                <input type="text" class="form-control" id="firstName"  placeholder="First Name" readonly>
+            <div class="form-group ">
+                <input type="text" class="form-control" id="firstName"  placeholder="First Name: <%= user.local.firstName %>" readonly>
+                
             </div>
         </div>
-        </div>
+    </div>
     
         <div class="row justify-content-md-center">
         <div class="col-4">
             <div class="form-group">
-                <input type="text" class="form-control" id="lastName"  placeholder="Last Name" readonly>
+                <input type="text" class="form-control" id="lastName"  placeholder="Last Name: <%= user.local.lastName %>" readonly>
             </div>
         </div> 
         </div>
@@ -57,23 +58,16 @@
         <div class="row justify-content-md-center">
             <div class="col-4">
             <div class="form-group">
-                <input type="email" class="form-control" id="email"  placeholder="Email Address" readonly>
+                <input type="email" class="form-control" id="email"  placeholder="Email Address: <%= user.local.email %>" readonly>
             </div>
             </div>
         </div>
 
-        <div class="row justify-content-md-center">
-            <div class="col-4">
-            <div class="form-group">
-                <input type="text" class="form-control" id="birthdate"  placeholder="Date of Birth" readonly>
-            </div>
-            </div>
-        </div>
 
         <div class="row justify-content-md-center">
             <div class="col-4">
             <div class="form-group">
-                <input type="username" class="form-control" id="username"  placeholder="Username" readonly>
+                <input type="username" class="form-control" id="username"  placeholder="Username: <%= user.local.userName %>" readonly>
             </div>
             </div>
         </div>

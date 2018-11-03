@@ -32,15 +32,21 @@
 </div>
 </div>
 
-<form>
+<form action="/login" method="post">
+
 <div class="container">
+
+
 <div class="row justify-content-md-center top-buffer">
     <p class="text-justify">Log in below!</p>
 </div>
+<% if (message.length > 0) { %>
+    <div class="alert alert-danger"><%= message %></div>
+<% } %>
 <div class="row justify-content-md-center">
     <div class="col-4">
     <div class="form-group">
-        <input type="text" class="form-control" id="userName"  placeholder="Username">
+        <input type="text" class="form-control" name="email"  placeholder="Username">
     </div>
     </div>
 </div>
@@ -48,12 +54,12 @@
 <div class="row justify-content-md-center">
     <div class="col-4">
     <div class="form-group">
-        <input type="password" class="form-control" id="password"  placeholder="Password">
+        <input type="password" class="form-control" name="password"  placeholder="Password">
     </div>
     </div> 
 </div>
 <div class="row justify-content-md-center">
-        <button type="button" class="btn btn-outline-success">Log In</button>
+        <button type="submit" class="btn btn-outline-success">Log In</button>
         <button type="button" class="btn btn-outline-danger left-buffer">Cancel</button>
     </div>
 </div>

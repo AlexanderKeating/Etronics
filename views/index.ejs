@@ -16,17 +16,17 @@
   
     <div class="row justify-content-md-center"> 
         <img src="/Images/textLogo.png" alt="Etronics Logo" class="text-logo">
-
     </div>    
+
   <div class="row justify-content-md-center"> 
     <nav class="navbar navbar-expand-lg title-container navbar-light bg-light">
         <div class="container" id="navbarNavAltMarkup">
           <div class="navbar-nav" >
             <a class="nav-item nav-link active" href="#">Home</a>
-            <a class="nav-item nav-link" href="#">Shop</a>
-            <a class="nav-item nav-link" href="account.ejs">Account</a>
-            <a class="nav-item nav-link" href="contact.ejs">Contact</a>
-            <a class="nav-item nav-link" href="login.ejs">Log In</a>
+            <a class="nav-item nav-link" href="shop">Shop</a>
+            <a class="nav-item nav-link" href="account">Account</a>
+            <a class="nav-item nav-link" href="contact">Contact</a>
+            <a class="nav-item nav-link" href="login">Log In</a>
 
             
           </div>
@@ -41,10 +41,15 @@
       <p class="text-justify">Please sign up below to begin selling/buying used and new electronics!</p>
 
     </div>
-<!--     <div class="row justify-content-md-center">
+
+    <% if (message.length > 0) { %>
+      <div class="row justify-content-md-center alert alert-danger"><%= message %></div>
+    <% } %>
+
+    <div class="row justify-content-md-center">
       <div class="col-4">
         <div class="form-group">
-            <input type="text" class="form-control" id="firstName"  placeholder="First Name">
+            <input type="text" class="form-control" name="firstName"  placeholder="First Name">
         </div>
       </div>
     </div>
@@ -52,11 +57,11 @@
     <div class="row justify-content-md-center">
       <div class="col-4">
         <div class="form-group">
-            <input type="text" class="form-control" id="lastName"  placeholder="Last Name">
+            <input type="text" class="form-control" name="lastName"  placeholder="Last Name">
         </div>
       </div> 
     </div>
- -->
+
     <div class="row justify-content-md-center">
       <div class="col-4">
         <div class="form-group">
@@ -65,22 +70,14 @@
         </div>
     </div>
 
- <!--    <div class="row justify-content-md-center">
+    <div class="row justify-content-md-center">
         <div class="col-4">
           <div class="form-group">
-              <input type="text" class="form-control" id="birthdate"  placeholder="Date of Birth">
+              <input type="username" class="form-control" name="userName"  placeholder="Username">
           </div>
         </div>
     </div>
 
-    <div class="row justify-content-md-center">
-        <div class="col-4">
-          <div class="form-group">
-              <input type="username" class="form-control" id="username"  placeholder="Username">
-          </div>
-        </div>
-    </div>
- -->
     <div class="row justify-content-md-center">
         <div class="col-4">
           <div class="form-group">
