@@ -38,18 +38,19 @@ module.exports = function(app, passport) {
         failureFlash : true // allow flash messages
     }));
 
-
-
-
-
     //======================================
     //Item Creation ========================
     //======================================
     app.get('/itemCreation', function(req, res) {
-        res.render('itemcCreation.ejs', {
+        res.render('itemCreation.ejs', {
             user : req.user // get the user out of session and pass to template
         });
     });
+    app.post('/itemCreation', passport.authenticate('item-creation', {
+        successRedirect : '/shop',
+        failureRedirect : '/itemCreation',
+        failureFlash : true
+    }));
 
 
     // =====================================

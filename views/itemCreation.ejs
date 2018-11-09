@@ -35,41 +35,46 @@
     <div class="row justify-content-md-center">
         <img src="Images/itemPicturePlaceholder.png" alt="Profile Picture Placeholder" class="rounded mx-auto d-block placeholder-size bottom-buffer">
     </div>
+
+<form action="/itemCreation" method="post">    
     <div class="row justify-content-md-center">
             <div class="col-4">
             <div class="form-group">
-                <input type="text" class="form-control" id="itemName"  placeholder="Product Name">
+                <input type="text" class="form-control" name="productName"  placeholder="Product Name">
             </div>
         </div>
         </div>
-    
+        
         <div class="row justify-content-md-center">
         <div class="col-4">
             <div class="form-group">
-              
-                <input type="number" class="form-control" id="itemPrice"  placeholder="Item Price">
+                <input type="number" class="form-control" name="itemPrice"  placeholder="Item Price">
             </div>
         </div> 
         </div>
-    
+        
         <div class="row justify-content-md-center">
             <div class="col-4">
             <div class="form-group">
-                <input type="number" class="form-control" id="Quantity"  placeholder="Quantity">
+                <input type="number" class="form-control" name="Quantity"  placeholder="Quantity">
             </div>
             </div>
         </div>
-
+        
         <div class="row justify-content-md-center">
             <div class="col-4">
             <div class="form-group">
-                <textarea class="form-control" id="Item Description"  rows="5" placeholder="Description"></textarea>
+                <textarea class="form-control" name="Description"  rows="5" placeholder="Description"></textarea>
             </div>
             </div>
         </div>
-
-</div>
-
+        
+        <div class="row justify-content-md-center">
+                <button type="submit" class="btn btn-outline-success">Post Item</button>
+                <button type="button" class="btn btn-outline-danger left-buffer">Cancel</button>        
+        </div>
+    </div>
+</form>
 
 <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
