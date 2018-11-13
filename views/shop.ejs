@@ -12,15 +12,14 @@
     crossorigin="anonymous"></script>
   <!--<script  type="text/javascript" src="JS/etronicsCreation.js"></script>-->
   <link href="/CSS/index.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+  <script type="text/javascript" src="/datatables/data.js"></script>
 
 </head>
 
-<script>
-    $(document).ready( function () {
-        $('#item_Table').DataTable();
-    } );</script>
 
 <body>
   <div class="container text-center">
@@ -43,27 +42,27 @@
       </nav>
     </div>
   </div>
-
+<div class ="row justify-content-md-center top-buffer">
   <!--Start Datatables to display items for sale-->
   <table id="item_Table" class="display">
-      <thead>
-          <tr>
-              <th>Column 1</th>
-              <th>Column 2</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr>
-              <td>Row 1 Data 1</td>
-              <td>Row 1 Data 2</td>
-          </tr>
-          <tr>
-              <td>Row 2 Data 1</td>
-              <td>Row 2 Data 2</td>
-          </tr>
-      </tbody>
+    <thead>
+      <tr>
+        <th>Column 1</th>
+        <th>Column 2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Row 1 Data 1</td>
+        <td>Row 1 Data 2</td>
+      </tr>
+      <tr>
+        <td>Row 2 Data 1</td>
+        <td>Row 2 Data 2</td>
+      </tr>
+    </tbody>
   </table>
-
+</div>
 
 </body>
 
