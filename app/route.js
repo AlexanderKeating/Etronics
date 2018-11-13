@@ -1,5 +1,7 @@
 // app/routes.js
 module.exports = function(app, passport) {
+    var itemSchema = require('../app/models/item');
+    
 
     // =====================================
     // HOME PAGE (with login links) ========
@@ -46,11 +48,23 @@ module.exports = function(app, passport) {
             user : req.user // get the user out of session and pass to template
         });
     });
-    app.post('/itemCreation', passport.authenticate('item-creation', {
-        successRedirect : '/shop',
-        failureRedirect : '/itemCreation',
-        failureFlash : true
-    }));
+    app.post('/itemCreation', function(req, res){
+        var item = new itemSchema();
+        item.local.productName = req.body.productName;
+        item.local.itemPrice = req.body.itemPrice;
+        item.local.Quantity = req.body.Quantity;
+        item.local.Description = req.body.Description;
+        item.save(function(err) {
+            if (err)
+                throw err;
+            else
+                console.log('Saved item information successfully');
+    
+        });
+     successRedirect: '/account'
+    });
+
+
 
 
     // =====================================
