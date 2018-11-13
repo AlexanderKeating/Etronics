@@ -28,7 +28,7 @@ app.set('view engine', 'ejs'); // set up ejs for templating
 
 // required for passport
 app.use(session({
-    secret: 'ilovescotchscotchyscotchscotch'
+    secret: 'secretEtronics'
 })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
@@ -43,4 +43,4 @@ require('./app/route.js')(app, passport); // load our routes and pass in our app
 
 // launch ======================================================================
 app.listen(port);
-console.log('The magic happens on port ' + port);
+console.log('Port' + port);

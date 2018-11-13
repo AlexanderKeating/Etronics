@@ -81,6 +81,18 @@ module.exports = function (app, passport) {
         res.redirect('/shop');
     });
 
+    app.get('items', function (req, res) {
+        item.find({}, function(err, items){
+            var itemMap = {}
+
+
+
+        })
+
+
+
+
+    })
 
 
     //=========================================================================================
