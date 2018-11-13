@@ -11,7 +11,8 @@ var itemSchema = mongoose.Schema({
         itemPrice       : Number,
         Quantity        : Number,
         Description     : String,
-    }
+        seller          : String
+        }
 
 });
 
