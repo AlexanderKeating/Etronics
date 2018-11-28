@@ -42,5 +42,5 @@ app.use('/datatables', express.static(__dirname + "/datatables"));
 require('./app/route.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 // Go live ======================================================================
-app.listen(port, '64.131.110.195');
+app.listen(port, '0.0.0.0');
 console.log('Port' + port);
