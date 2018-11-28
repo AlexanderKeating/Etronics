@@ -15,16 +15,16 @@ var configDB = require('./config/database.js');
 // configuration ===============================================================
 mongoose.connect('mongodb+srv://etronicsAdmin:test@e-tronics-k3fco.mongodb.net/test?retryWrites=true', {
     useNewUrlParser: true
-}); // connect to our database
+}); // connect to mongoDB
 
-require('./config/passport')(passport); // pass passport for configuration
+require('./config/passport')(passport); // pass passport
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
-app.use(cookieParser()); // read cookies (needed for auth)
-app.use(bodyParser()); // get information from html forms
+app.use(cookieParser()); // read cookies
+app.use(bodyParser()); // get information
 
-app.set('view engine', 'ejs'); // set up ejs for templating
+app.set('view engine', 'ejs'); //Set up EJS
 
 // required for passport
 app.use(session({
@@ -41,6 +41,6 @@ app.use('/datatables', express.static(__dirname + "/datatables"));
 // routes ======================================================================
 require('./app/route.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
-// launch ======================================================================
-app.listen(port);
+// Go live ======================================================================
+app.listen(3000, '0.0.0.0');
 console.log('Port' + port);
