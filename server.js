@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 3000;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash = require('connect-flash');
@@ -15,16 +15,16 @@ var configDB = require('./config/database.js');
 // configuration ===============================================================
 mongoose.connect('mongodb+srv://etronicsAdmin:test@e-tronics-k3fco.mongodb.net/test?retryWrites=true', {
     useNewUrlParser: true
-}); // connect to mongoDB
+}); // connect to our database
 
-require('./config/passport')(passport); // pass passport
+require('./config/passport')(passport); // pass passport for configuration
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies
 app.use(bodyParser()); // get information
 
-app.set('view engine', 'ejs'); //Set up EJS
+app.set('view engine', 'ejs'); //Set up
 
 // required for passport
 app.use(session({
@@ -42,5 +42,5 @@ app.use('/datatables', express.static(__dirname + "/datatables"));
 require('./app/route.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 // Go live ======================================================================
-app.listen(3000, '0.0.0.0');
+app.listen(port, '0.0.0.0');
 console.log('Port' + port);
