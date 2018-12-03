@@ -16,8 +16,8 @@
     crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-  <script type="text/javascript" src="/datatables/data.js"></script>
-
+  <!-- <script type="text/javascript" src="/app/postItemsToTable.js"></script> -->
+ 
 </head>
 
 
@@ -32,9 +32,9 @@
       <nav class="navbar navbar-expand-lg title-container navbar-light bg-light">
         <div class="container" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home</a>
-            <a class="nav-item nav-link" href="shop">Shop</a>
-            <a class="nav-item nav-link" href="itemCreation">Account</a>
+            <a class="nav-item nav-link active" href="login">Home</a>
+            <a class="nav-item nav-link" href="#">Shop</a>
+            <a class="nav-item nav-link" href="account">Account</a>
             <a class="nav-item nav-link" href="contact">Contact</a>
             <a class="nav-item nav-link" href="login">Log In</a>
           </div>
@@ -42,30 +42,58 @@
       </nav>
     </div>
   </div>
-<div class ="row justify-content-md-center top-buffer">
+<div class ="row justify-content-md-center top-buffer w-100" id="itemsTable">
   <!--Start Datatables to display items for sale-->
-  <table id="item_Table" class="display">
+  <table id="item_Table" class="table table-striped" width="100%">
     <thead>
       <tr>
-        <th>Column 1</th>
-        <th>Column 2</th>
+          <th>productName</th>
+          <th>itemPrice</th>
+          <th>Quantity</th>
+          <th>Description</th>
+          <th>seller</th>
+          <th>Buy Now</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td>Row 1 Data 1</td>
-        <td>Row 1 Data 2</td>
-      </tr>
-      <tr>
-        <td>Row 2 Data 1</td>
-        <td>Row 2 Data 2</td>
-      </tr>
-    </tbody>
   </table>
 </div>
 
 </body>
+<script>
+    $(document).ready(function () {
+        var t = $('#item_Table').DataTable({
+            "paging": true,
+            "pageLength": 10,
+            "processing": true,
+            "serverSide": true,
+            'ajax': {
+                'type': 'POST',
+                'url': '/itemsToTable'
+            },
+            'columns':
+                [
+                { 'data': 'productName',
+                        "render": function (data, type, row, meta ){
+                          return '<a href="itemViewPage">'+ </a>';
+                        }
+              },
+                { 'data': 'itemPrice', 'name': 'itemPrice' },
+                { 'data': 'Quantity', 'name': 'Quantity' },
+                { 'data': 'Description', 'name': 'Description' },
+                { 'data': 'seller', 'name': 'seller' },
 
 
-
+    
+                ],
+            "columnDefs": [
+                {
+                    "searchable": false,
+                    "orderable": true,
+                    "targets": 0
+                }
+            ]
+        });
+  
+     });
+</script>
 </html>

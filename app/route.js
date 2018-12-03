@@ -1,7 +1,9 @@
 // app/routes.js
 module.exports = function (app, passport) {
     var itemSchema = require('../app/models/item');
-
+    var express = require('express');
+    var bodyParser = require('body-parser');
+    var mongoose = require('mongoose');
 
     // =====================================
     // HOME PAGE (with login links) ========
@@ -28,7 +30,6 @@ module.exports = function (app, passport) {
         failureFlash : true // allow flash messages
     }));
 
-
     //=========================================================================================
     //=========================================================================================
     // process the login form
@@ -53,7 +54,6 @@ module.exports = function (app, passport) {
         failureFlash: true // allow flash messages
     }));
 
-
     //=========================================================================================
     //=========================================================================================
     //======================================
@@ -64,36 +64,25 @@ module.exports = function (app, passport) {
             user: req.user // get the user out of session and pass to template
         });
     });
+
+    //Adding the items to MongoDB.
     app.post('/itemCreation', function (req, res) {
         var item = new itemSchema();
-        item.local.productName  = req.body.productName;
-        item.local.itemPrice    = req.body.itemPrice;
-        item.local.Quantity     = req.body.Quantity;
-        item.local.Description  = req.body.Description;
-        item.local.seller       = req.user.local.userName;
+        item.productName  = req.body.productName;
+        item.itemPrice    = req.body.itemPrice;
+        item.Quantity     = req.body.Quantity;
+        item.Description  = req.body.Description;
+        item.seller       = req.user.local.userName;
         item.save(function (err) {
             if (err)
                 throw err;
             else
                 console.log('Saved item information successfully');
-
         });
         res.redirect('/shop');
     });
-
     app.get('items', function (req, res) {
-        item.find({}, function(err, items){
-            var itemMap = {}
-
-
-
-        })
-
-
-
-
-    })
-
+    });
 
     //=========================================================================================
     //=========================================================================================
@@ -102,24 +91,34 @@ module.exports = function (app, passport) {
     // =====================================
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
-    app.get('/account', function (req, res) {
+    app.get('/account', isLoggedIn, function (req, res) {
         res.render('account.ejs', {
             user: req.user // get the user out of session and pass to template
         });
     });
-
     app.get('/contact', function (req, res) {
         res.render('contact.ejs', {
             user: req.user // get the user out of session and pass to template
         });
     });
+    //=========================================================================================
+    //=========================================================================================
+    // =====================================
+    // GET Item View Page ============================
+    // =====================================
 
-    app.get('/shop', function (req, res) {
-        res.render('shop.ejs', {
-            user: req.user // get the user out of session and pass to template
-        });
+    app.get('/itemViewPage', function(req, res){
+        res.render('itemViewPage.ejs');
     });
 
+    //=========================================================================================
+    //=========================================================================================
+    // =====================================
+    // GET SHOP ============================
+    // =====================================
+    app.get('/shop', function (req, res) {
+        res.render('shop.ejs');
+    });
 
     //=========================================================================================
     //=========================================================================================
@@ -130,7 +129,20 @@ module.exports = function (app, passport) {
         req.logout();
         res.redirect('/');
     });
+
+   //=========================================================================================
+    //=========================================================================================
+    // =====================================
+    // Get Items from MongoDB for Datatables
+    // =====================================
+    var itemsController = require('../datatables/getItemsController');
+
+    app.get('/shop',function(req, res) {
+        res.sendFile(path.join(__dirname + '../view/shop.ejs'));
+    });
+    app.post('/itemsToTable',itemsController.getItems);
 };
+
 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
@@ -142,3 +154,9 @@ function isLoggedIn(req, res, next) {
     // if they aren't redirect them to the home page
     res.redirect('/');
 }
+
+
+
+
+
+ 
