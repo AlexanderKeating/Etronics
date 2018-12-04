@@ -77,8 +77,10 @@
                 { 'data': 'Quantity', 'name': 'Quantity' },
                 { 'data': 'Description', 'name': 'Description' },
                 { 'data': 'seller', 'name': 'seller' },
-
-
+                { 'data': function(data, type, full) {
+                return '<a class="btn btn-info btn-sm" href=#/>' + 'Buy Now' + '</a>';
+                        }
+                      }
     
                 ],
             "columnDefs": [
