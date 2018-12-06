@@ -44,6 +44,8 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
+
+//Adding the directories of files that need to be passed into the EJS files. 
 app.use('/css', express.static(__dirname + "/CSS"));
 app.use('/Images', express.static(__dirname + "/Images"));
 app.use('/views', express.static(__dirname + "/views"));
@@ -54,5 +56,5 @@ app.use('/datatableFunctions', express.static(__dirname + "/datatableFunctions")
 require('./app/route.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 // Go live ======================================================================
-app.listen(port); //Make the website available on all IPS and the port is 8080.
+app.listen(port, '0.0.0.0'); //Make the website available on all IPS and the port is 8080.
 console.log('Port' + port);
