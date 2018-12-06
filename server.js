@@ -46,7 +46,9 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 app.use('/css', express.static(__dirname + "/CSS"));
 app.use('/Images', express.static(__dirname + "/Images"));
+app.use('/views', express.static(__dirname + "/views"));
 app.use('/app', express.static(__dirname + "/app"));
+app.use('/datatableFunctions', express.static(__dirname + "/datatableFunctions"));
 
 // routes ======================================================================
 require('./app/route.js')(app, passport); // load our routes and pass in our app and fully configured passport

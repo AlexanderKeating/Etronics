@@ -4,6 +4,9 @@ module.exports = function (app, passport) {
     var express = require('express');
     var bodyParser = require('body-parser');
     var mongoose = require('mongoose');
+    var itemsController = require('../datatableFunctions/getItemsController');
+    var accountItemsController = require('../datatableFunctions/accountItems');
+
 
     // =====================================
     // HOME PAGE (with login links) ========
@@ -21,7 +24,8 @@ module.exports = function (app, passport) {
     app.get('/login', function (req, res) {
         // render the page and pass in any flash data if it exists
         res.render('login.ejs', {
-            message: req.flash('loginMessage')
+            message: req.flash('loginMessage'),
+            user: req.user
         });
     });
     app.post('/login', passport.authenticate('local-login', {
@@ -84,23 +88,47 @@ module.exports = function (app, passport) {
     app.get('items', function (req, res) {
     });
 
+
+
+
+
     //=========================================================================================
     //=========================================================================================
     // =====================================
     // PROFILE SECTION =====================
     // =====================================
-    // we will want this protected so you have to be logged in to visit
-    // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/account', isLoggedIn, function (req, res) {
         res.render('account.ejs', {
             user: req.user // get the user out of session and pass to template
         });
     });
+
+    //=========================================================================================
+    //=========================================================================================
+    // =====================================
+    // My Items Page =====================
+    // =====================================
+    app.get('/myItems', isLoggedIn, function(req, res){
+        res.render('myItems.ejs', {user: req.user}); 
+    });
+    app.get('/myItems', isLoggedIn, function (req, res) {
+        res.sendFile(path.join(__dirname + '../views/myItems.ejs'));
+    });
+
+    
+    app.post('/itemsToAccountTable',accountItemsController.getItemsAccount);
+
+    //=========================================================================================
+    //=========================================================================================
+    // =====================================
+    // Contact Page =====================
+    // =====================================
     app.get('/contact', function (req, res) {
         res.render('contact.ejs', {
             user: req.user // get the user out of session and pass to template
         });
     });
+
     //=========================================================================================
     //=========================================================================================
     // =====================================
@@ -130,17 +158,25 @@ module.exports = function (app, passport) {
         res.redirect('/');
     });
 
-   //=========================================================================================
+    //=========================================================================================
     //=========================================================================================
     // =====================================
     // Get Items from MongoDB for Datatables
     // =====================================
-    var itemsController = require('../datatables/getItemsController');
 
     app.get('/shop',function(req, res) {
-        res.sendFile(path.join(__dirname + '../view/shop.ejs'));
+        res.sendFile(path.join(__dirname + '../views/shop.ejs'));
     });
     app.post('/itemsToTable',itemsController.getItems);
+
+
+   //=========================================================================================
+    //=========================================================================================
+    // =====================================
+    // Get Items from MongoDB for Account Datatables
+    // =====================================
+
+
 };
 
 
