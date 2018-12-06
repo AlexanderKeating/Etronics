@@ -1,3 +1,4 @@
+/**This is the javascript used to get the items for a persons account*/
 var itemsModel = require('../app/models/getItems');
 
 exports.getItems = function (req, res) {
@@ -25,7 +26,7 @@ exports.getItems = function (req, res) {
             console.log(c);
             console.log(req.body.start);
             console.log(req.body.length);
-                itemsModel.find(searchStr, 'productName itemPrice Quantity Description seller', {'skip': Number( req.body.start), 'limit': Number(req.body.length) }, function (err, results) {
+                itemsModel.find(searchStr, 'productName itemPrice Quantity Description seller', {'skip': Number( req.body.start), 'limit': Number(req.body.length) }, function (err, results) { // get all items in the items collection
                     if (err) {
                         console.log('error while getting results'+err);
                         return;

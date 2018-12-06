@@ -1,9 +1,9 @@
-// app/models/user.js
-// load the things we need
+/**This is the schema to PUT the items into the collections
+ * in order to add them to our MongoDB databse
+ */
 var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
 
-// define the schema for our user model
 var itemSchema = new mongoose.Schema({
         productName     : String,
         itemPrice       : Number,
@@ -14,6 +14,4 @@ var itemSchema = new mongoose.Schema({
 
 });
 
-
-// create the model for users and expose it to our app
 module.exports = mongoose.model('item', itemSchema);

@@ -1,5 +1,6 @@
-// app/models/user.js
-// load the things we need
+/**This is the schema to PUT the users into the collections
+ * in order to add them to our MongoDB databse
+ */
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 
